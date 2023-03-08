@@ -10,33 +10,32 @@ public class Main {
         Person anton = new Person("Антон", 29);
         Person petr = new Person("Петя", 6);
         Person sasha = new Person("Саша", 7);
-        Person boris = new Person(("Борис"));
         GeoTree gt = new GeoTree();
 
-        gt.append(irina, vasya);
-        gt.append(irina, masha);
-        gt.append(vasya, jane);
-        gt.append(vasya, ivan);
-        gt.append(masha, petr);
-        gt.append(masha, sasha);
-        gt.append(anton, petr);
-        gt.append(anton, sasha);
-        gt.addMarried(anton, masha);
+        gt.append(irina, Relationship.parent, vasya);
+        gt.append(irina, Relationship.parent, masha);
+        gt.append(vasya, Relationship.parent,jane);
+        gt.append(vasya, Relationship.parent, ivan);
+        gt.append(masha, Relationship.parent,petr);
+        gt.append(masha, Relationship.parent,sasha);
+        gt.append(anton, Relationship.parent,petr);
+        gt.append(anton, Relationship.parent,sasha);
+        gt.append(anton, Relationship.wife, masha);
 
         System.out.println("Дети Ирины: " + new Reserch(gt).spend(irina,
                 Relationship.parent));
         System.out.println("Родители Пети: " + new Reserch(gt).spend(petr,
                 Relationship.children));
-        System.out.println(anton.getFullInfoAboutPerson() + " в браке с " + new Reserch(gt).spend(anton,
+        System.out.println(anton.getFullName() + " в браке с " + new Reserch(gt).spend(anton,
+                Relationship.wife));
+        System.out.println(masha.getFullName() + " в браке с " + new Reserch(gt).spend(masha,
+                Relationship.husband));
+        System.out.println(masha.getFullName() + " в браке с " + new Reserch(gt).spend(masha,
                 Relationship.married));
-        System.out.println(masha.getFullInfoAboutPerson() + " в браке с " + new Reserch(gt).spend(masha,
-                Relationship.married));
 
+        new Reserch(gt).ageSort(18, '>');
+        new Reserch(gt).ageSort(18, '<');
 
-        System.out.println("Люди старше 18 лет: " + new Reserch(gt).ageMore(18));
-        System.out.println("Люди младше 18 лет: " + new Reserch(gt).ageLess(18));
-
-        System.out.println(irina.getFullInfoAboutPerson());
-        System.out.println(boris.getFullInfoAboutPerson());
+        gt.print();
     }
 }

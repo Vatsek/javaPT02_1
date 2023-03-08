@@ -7,7 +7,6 @@ public class Node { // узлы
         this.re = re;
         this.p2 = p2;
     }
-
     Person p1;
     Relationship re;
     Person p2;

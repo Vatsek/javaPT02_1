@@ -18,23 +18,25 @@ public class Reserch {
         }
         return result;
     }
-    public HashSet<String> ageMore(int age) {
-        for (Node t: tree) {
-            if (t.p1.getAge() >= age) {
-                result.add(t.p1.getFullName());
+        public void ageSort(int age, char ch) {
+        if (ch == '>') {
+            for (Node t: tree) {
+                if (t.p1.getAge() >= age) {
+                    result.add(t.p1.getFullName());
+                }
             }
+            System.out.print("Люди старше "+ age +" лет: ");
+        }
+        else {
+            for (Node t: tree) {
+                if (t.p1.getAge() < age && t.p1.getAge() >= 0) {
+                    result.add(t.p1.getFullName());
+                }
+            }
+            System.out.print("Люди младше "+ age +" лет: ");
         }
         HashSet<String> result = new HashSet<>(this.result);
-        return result;
-    }
-    public HashSet<String> ageLess(int age) {
-        for (Node t: tree) {
-            if (t.p1.getAge() < age && t.p1.getAge() >= 0) {
-                result.add(t.p1.getFullName());
-            }
-        }
-        HashSet<String> result = new HashSet<>(this.result);
-        return result;
+            System.out.println(result);
     }
 }
 
