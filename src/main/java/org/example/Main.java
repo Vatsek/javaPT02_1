@@ -13,22 +13,33 @@ public class Main {
         GeoTree gt = new GeoTree();
 
         gt.append(irina, Relationship.parent, vasya);
+        gt.append(vasya, Relationship.children, irina);
         gt.append(irina, Relationship.parent, masha);
+        gt.append(masha, Relationship.children, irina);
         gt.append(vasya, Relationship.parent,jane);
+        gt.append(jane, Relationship.children,vasya);
         gt.append(vasya, Relationship.parent, ivan);
+        gt.append(ivan, Relationship.children, vasya);
         gt.append(masha, Relationship.parent,petr);
+        gt.append(petr, Relationship.children,masha);
         gt.append(masha, Relationship.parent,sasha);
+        gt.append(sasha, Relationship.children,masha);
         gt.append(anton, Relationship.parent,petr);
+        gt.append(petr, Relationship.children,anton);
         gt.append(anton, Relationship.parent,sasha);
+        gt.append(sasha, Relationship.children,anton);
         gt.append(anton, Relationship.wife, masha);
+        gt.append(masha, Relationship.husband, anton);
+        gt.append(masha, Relationship.married, anton);
+        gt.append(anton, Relationship.married, masha);
 
         System.out.println("Дети Ирины: " + new Reserch(gt).spend(irina,
                 Relationship.parent));
         System.out.println("Родители Пети: " + new Reserch(gt).spend(petr,
                 Relationship.children));
-        System.out.println(anton.getFullName() + " в браке с " + new Reserch(gt).spend(anton,
+        System.out.println(anton.getFullName() + " женат на " + new Reserch(gt).spend(anton,
                 Relationship.wife));
-        System.out.println(masha.getFullName() + " в браке с " + new Reserch(gt).spend(masha,
+        System.out.println(masha.getFullName() + " за мужем за " + new Reserch(gt).spend(masha,
                 Relationship.husband));
         System.out.println(masha.getFullName() + " в браке с " + new Reserch(gt).spend(masha,
                 Relationship.married));
