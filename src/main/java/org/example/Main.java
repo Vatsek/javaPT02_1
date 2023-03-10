@@ -12,26 +12,16 @@ public class Main {
         Person sasha = new Person("Саша", 7);
         GeoTree gt = new GeoTree();
 
-        gt.append(irina, Relationship.parent, vasya);
-        gt.append(vasya, Relationship.children, irina);
-        gt.append(irina, Relationship.parent, masha);
-        gt.append(masha, Relationship.children, irina);
-        gt.append(vasya, Relationship.parent,jane);
-        gt.append(jane, Relationship.children,vasya);
-        gt.append(vasya, Relationship.parent, ivan);
-        gt.append(ivan, Relationship.children, vasya);
-        gt.append(masha, Relationship.parent,petr);
-        gt.append(petr, Relationship.children,masha);
-        gt.append(masha, Relationship.parent,sasha);
-        gt.append(sasha, Relationship.children,masha);
-        gt.append(anton, Relationship.parent,petr);
-        gt.append(petr, Relationship.children,anton);
-        gt.append(anton, Relationship.parent,sasha);
-        gt.append(sasha, Relationship.children,anton);
-        gt.append(anton, Relationship.wife, masha);
-        gt.append(masha, Relationship.husband, anton);
-        gt.append(masha, Relationship.married, anton);
-        gt.append(anton, Relationship.married, masha);
+        gt.append(irina, Relationship.parent, Relationship.children, vasya);
+        gt.append(irina, Relationship.parent, Relationship.children, masha);
+        gt.append(vasya, Relationship.parent,Relationship.children, jane);
+        gt.append(vasya, Relationship.parent, Relationship.children, ivan);
+        gt.append(masha, Relationship.parent, Relationship.children, petr);
+        gt.append(masha, Relationship.parent, Relationship.children, sasha);
+        gt.append(anton, Relationship.parent, Relationship.children, petr);
+        gt.append(anton, Relationship.parent, Relationship.children, sasha);
+        gt.append(anton, Relationship.wife, Relationship.husband, masha);
+        gt.append(masha, Relationship.married, Relationship.married, anton);
 
         System.out.println("Дети Ирины: " + new Reserch(gt).spend(irina,
                 Relationship.parent));
