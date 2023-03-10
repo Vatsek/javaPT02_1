@@ -9,8 +9,9 @@ public class GeoTree implements Printable{
         return tree;
     }
 
-    public void append(Person p1, Relationship re, Person p2) {
+    public void append(Person p1, Relationship re, Relationship reverseRe, Person p2) {
         tree.add(new Node(p1, re, p2));
+        tree.add(new Node(p2, reverseRe, p1));
     }
 
     @Override
