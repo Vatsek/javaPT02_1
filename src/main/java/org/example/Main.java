@@ -10,6 +10,8 @@ public class Main {
         Person anton = new Person("Антон", 29);
         Person petr = new Person("Петя", 6);
         Person sasha = new Person("Саша", 7);
+        Person petr1 = new Person("Петя", 6);
+        Person sasha1 = new Person("Саша", 2);
         GeoTree gt = new GeoTree();
 
         gt.append(irina, Relationship.parent, Relationship.children, vasya);
@@ -37,6 +39,10 @@ public class Main {
         new Reserch(gt).ageSort(18, '>');
         new Reserch(gt).ageSort(18, '<');
 
-        gt.print();
+//        gt.print();
+
+        System.out.println(petr.equals(petr1));
+        System.out.println(sasha.equals(sasha1));
+
     }
 }
