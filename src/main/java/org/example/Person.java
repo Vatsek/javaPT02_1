@@ -38,4 +38,9 @@ public class Person implements Comparable<Person> {
             return false;
         } else return this.getFullName().equals(((Person) obj).getFullName()) && this.getAge() == ((Person) obj).getAge();
     }
+
+    @Override
+    public String toString() {
+        return this.getFullName();
+    }
 }
